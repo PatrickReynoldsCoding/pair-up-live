@@ -10,7 +10,7 @@ function Location() {
   let position = null;
 
   useEffect(() => {
-    fetch('http://localhost:8080/profile/all')
+    fetch('http://localhost:8080/api/profile/all')
       .then((response) => response.json())
       .then((data) => {
         setResult({ user: data });

@@ -23,7 +23,7 @@ const Profile = () => {
         },
       };
     }
-    fetch('http://localhost:8080/profile/me', config)
+    fetch('http://localhost:8080/api/profile/me', config)
       .then((response) => response.json())
       .then((data) => {
         setResult({ user: data });
