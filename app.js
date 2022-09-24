@@ -1,5 +1,6 @@
 // import modules
 const express = require('express');
+const path = require('path');
 const { json, urlencoded } = express;
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -43,13 +44,23 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cors({ origin: true, credentials: true })); //communicating between front and back end
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 // routes
-app.use('/auth', require('./routes/auth'));
-app.use('/user', require('./routes/user'));
-app.use('/sessions', require('./routes/sessions'));
-app.use('/profile', require('./routes/profile'));
-app.use('/profile:id', require('./routes/profile'));
-app.use('/projects', require('./routes/projects'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/user', require('./routes/user'));
+app.use('/api/sessions', require('./routes/sessions'));
+app.use('/api/profile', require('./routes/profile'));
+app.use('/api/profile:id', require('./routes/profile'));
+app.use('/api/projects', require('./routes/projects'));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 
 // port
 const port = process.env.PORT || 8080; //use PORT set up in enVars, or use 8080

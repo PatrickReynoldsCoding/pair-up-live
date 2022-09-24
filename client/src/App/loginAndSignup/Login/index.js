@@ -28,7 +28,7 @@ const Login = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password }),
     };
-    fetch('http://localhost:8080/auth', requestOptions)
+    fetch('http://localhost:8080/api/auth', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.token);

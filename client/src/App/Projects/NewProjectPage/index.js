@@ -33,7 +33,7 @@ export default function NewProjectPage() {
 
     try {
       const res = await fetch(
-        'http://localhost:8080/projects/createproject',
+        'http://localhost:8080/api/projects/createproject',
         config
       ).then((res) => {
         console.log(res);
