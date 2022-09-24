@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && yarn install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:unit": "jest",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "test:unit": "jest"
   },
   "keywords": [],
   "author": "",
