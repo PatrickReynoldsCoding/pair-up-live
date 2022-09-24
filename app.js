@@ -44,8 +44,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cors({ origin: true, credentials: true })); //communicating between front and back end
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 // routes
 app.use('/api/auth', require('./routes/auth'));
@@ -55,13 +54,19 @@ app.use('/api/profile', require('./routes/profile'));
 app.use('/api/profile:id', require('./routes/profile'));
 app.use('/api/projects', require('./routes/projects'));
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the React app
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
+  // The "catchall" handler: for any request that doesn't
+  // match one above, send back React's index.html file.
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'))
+}
 // port
 const port = process.env.PORT || 8080; //use PORT set up in enVars, or use 8080
 
