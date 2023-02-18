@@ -20,7 +20,7 @@ export default function HomepageProjects() {
   };
 
   const pullMyProjects = () => {
-    getAllProjectsById() // api functiQon
+    getAllProjectsById() // api function
       .then((res) => setMyProjects(res))
       .catch((err) => console.log(err));
   };
@@ -28,7 +28,7 @@ export default function HomepageProjects() {
   useEffect(() => {
     pullMyProjects();
     pullProjects();
-  }, []); // this is the dependancy array. [] means it will run once when the page opens
+  }, []); // this is the dependency array. [] means it will run once when the page opens
 
   if (projects != null) {
     console.log(projects);
@@ -42,17 +42,20 @@ export default function HomepageProjects() {
         <div className="sub-title">
           <h2>My Projects</h2>
         </div>
-
-        <div className="ProjectCardContainer">
-          <ProjectPostCardContainer projects={myProjects} />
-        </div>
+        {projects ? (
+          <div className="ProjectCardContainer">
+            <ProjectPostCardContainer projects={myProjects} />
+          </div>
+        ) : null}
 
         <div className="sub-title">
           <h2>All Projects</h2>
         </div>
-        <div className="ProjectCardContainer">
-          <ProjectPostCardContainer projects={projects} />
-        </div>
+        {projects && myProjects && (
+          <div className="ProjectCardContainer">
+            <ProjectPostCardContainer projects={projects} />
+          </div>
+        )}
       </>
     );
   }
