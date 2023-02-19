@@ -52,20 +52,10 @@ MERN Stack
 - Cypress
 
 
-# Headline specifications
+# What we would do differently
 
-* Any signed-up user can.....
-
-# Screen Shots
-#### Before Login - Main Page
-
- 
-#### Login/Signup Pages
-
-
-#### After Login - Main Page
-
-### USER STORIES
+1. Remove the index.js name convention of all components.
+2. Improve the abstraction and import functions into components.
 
 
 # SETUP
