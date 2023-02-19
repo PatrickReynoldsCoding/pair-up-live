@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-require('dotenv').config();
+var mongoose = require("mongoose");
+require("dotenv").config();
 
 beforeAll(function (done) {
-  mongoose.connect('mongodb://0.0.0.0/pair-up-test-db', {
+  mongoose.connect("mongodb://0.0.0.0/pair-up-test-db", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
@@ -14,8 +14,8 @@ beforeAll(function (done) {
   }
 
   var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-  db.on('open', function () {
+  db.on("error", console.error.bind(console, "MongoDB connection error:"));
+  db.on("open", function () {
     done();
   });
 });

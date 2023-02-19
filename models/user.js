@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const geocoder = require('../utils/geocoder');
+const mongoose = require("mongoose");
+const geocoder = require("../utils/geocoder");
 
 const UserSchema = new mongoose.Schema({
   fname: String,
@@ -10,50 +10,52 @@ const UserSchema = new mongoose.Schema({
       type: String,
     },
   ],
-  friends: [{
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'User'
-}],
+  friends: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+    },
+  ],
   username: String,
   email: String,
   password: String,
   postcode: String,
   country: {
     type: String,
-    default: 'GB',
+    default: "GB",
   },
   geoLocation: {
     type: {
       type: String,
-      enum: ['Point'],
+      enum: ["Point"],
     },
     coordinates: {
       type: [Number],
-      index: '2dsphere',
+      index: "2dsphere",
     },
   },
   picture: {
     type: String,
-    default: 'https://ca.slack-edge.com/T0266FRGM-U011PLSSMA9-g7e8a6705c42-512',
+    default: "https://ca.slack-edge.com/T0266FRGM-U011PLSSMA9-g7e8a6705c42-512",
   },
   github: {
     type: String,
-    default: 'makersacademy',
+    default: "makersacademy",
   },
 });
 
-UserSchema.pre('save', async function (next) {
+UserSchema.pre("save", async function (next) {
   const location = await geocoder.geocode({
     countryCode: this.contry,
     zipcode: this.postcode,
     maxResults: 1,
   });
   this.geoLocation = {
-    type: 'Point',
+    type: "Point",
     coordinates: [location[0].latitude, location[0].longitude],
   };
-  console.log(this.postcode.replace(/ /g, ''));
+  console.log(this.postcode.replace(/ /g, ""));
   next();
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

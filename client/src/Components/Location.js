@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useState } from 'react';
-import L from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { Icon } from 'leaflet';
-import { motion } from 'framer-motion';
+import React, { Component, useEffect, useState } from "react";
+import L from "leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Icon } from "leaflet";
+import { motion } from "framer-motion";
 
 function Location() {
   const [result, setResult] = useState({ user: [] });
@@ -10,7 +10,7 @@ function Location() {
   let position = null;
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/profile/all')
+    fetch("http://localhost:8080/profile/all")
       .then((response) => response.json())
       .then((data) => {
         setResult({ user: data });
@@ -30,10 +30,10 @@ function Location() {
       zoom={14}
       style={{ height: 600, width: 1000 }}
     >
-      <style>{'body { background-color: white; }'}</style>
+      <style>{"body { background-color: white; }"}</style>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.maptiler.com/maps/bright/256/{z}/{x}/{y}.png?key=fsB39cCVxZgXS53pflUQ"
+        url="https://api.maptiler.com/maps/bright/256/{z}/{x}/{y}.png?key=ravbdQfMqWwkAlCfWVuF"
       />
 
       {result.user.map((location, index) => (
@@ -42,7 +42,7 @@ function Location() {
             position={location.geoLocation.coordinates}
             icon={
               new Icon({
-                className: 'image-icon',
+                className: "image-icon",
                 iconUrl: `${location.picture}`,
                 iconSize: [35, 41],
                 iconAnchor: [12, 41],
@@ -52,11 +52,11 @@ function Location() {
             <Popup>
               <b>
                 {location.fname} {location.lname}
-              </b>{' '}
+              </b>{" "}
               <br /> <br />
               Software Engineering student
               <br /> at Makers Academy. <br /> <br />
-              <a href={'/profile/' + location._id}>View Profile </a>
+              <a href={"/profile/" + location._id}>View Profile </a>
             </Popup>
           </Marker>
         </div>

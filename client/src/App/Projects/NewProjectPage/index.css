@@ -1,9 +1,15 @@
 .i {
-font-size: larger;
-margin: auto;
-width: 300px;
-margin-top: -30px;
-margin-bottom: 50px;
+  font-size: larger;
+  margin: auto;
+  width: 300px;
+  margin-top: -30px;
+  margin-bottom: 50px;
+}
+
+.languages {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2%;
 }
 
 .h {
@@ -12,17 +18,14 @@ margin-bottom: 50px;
   width: px;
   margin-top: -30px;
   margin-bottom: 50px;
-  
-  }
-  .c {
-    font-size: larger;
-    margin: auto;
-    width: px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
-    }
-
+}
+.c {
+  font-size: larger;
+  margin: auto;
+  width: px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .content {
   max-width: 1200px;
@@ -30,7 +33,6 @@ margin-bottom: 50px;
   background: linear-gradient(-45deg, #d8d9e2, #c7c5f0, #cfcbe7, #9d99f2);
   padding: 150px;
   text-align: center;
-  
 }
 
 h3 {
@@ -42,36 +44,35 @@ h3 {
   margin-right: 0;
   font-weight: bold;
   text-align: center;
- 
 }
 
 .devicon-django-plain {
-  font-size: 5rem
+  font-size: 5rem;
 }
-.devicon-bootstrap-plain{
-  font-size: 5rem
+.devicon-bootstrap-plain {
+  font-size: 5rem;
 }
-.devicon-ruby-plain{
-  font-size: 5rem
+.devicon-ruby-plain {
+  font-size: 5rem;
 }
-.devicon-javascript-plain{
-  font-size: 5rem
+.devicon-javascript-plain {
+  font-size: 5rem;
 }
-.devicon-python-plain{
-  font-size: 5rem
+.devicon-python-plain {
+  font-size: 5rem;
 }
-.devicon-java-plain{
-  font-size: 5rem
+.devicon-java-plain {
+  font-size: 5rem;
 }
-.devicon-cplusplus-plain{
-  font-size: 5rem
+.devicon-cplusplus-plain {
+  font-size: 5rem;
 }
-.devicon-typescript-plain{
-  font-size: 5rem
+.devicon-typescript-plain {
+  font-size: 5rem;
 }
-.devicon-csharp-plain{
-  font-size: 5rem
+.devicon-csharp-plain {
+  font-size: 5rem;
 }
-.devicon-docker-plain{
-  font-size: 5rem
+.devicon-docker-plain {
+  font-size: 5rem;
 }

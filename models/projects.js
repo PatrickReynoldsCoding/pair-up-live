@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ProjectSchema = new mongoose.Schema({
   owner: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'User'
+    ref: "User",
   },
   name: String,
   difficulty: String,
@@ -13,16 +13,17 @@ const ProjectSchema = new mongoose.Schema({
   numberOfAdditionalUsersNeeded: Number,
   summary: String,
   description: String,
-  users: [{
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'User'
-}],
+  users: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+    },
+  ],
   langWeHave: [],
   langWeNeed: [],
   additionalSkillsNeeded: String,
   displayLocation: Boolean,
-  commitmentLevel: String
-
+  commitmentLevel: String,
 });
 
-module.exports = mongoose.model('Project', ProjectSchema);
+module.exports = mongoose.model("Project", ProjectSchema);
