@@ -42,11 +42,11 @@ export default function HomepageProjects() {
         <div className="sub-title">
           <h2>My Projects</h2>
         </div>
-        {projects ? (
+        {projects && myProjects && (
           <div className="ProjectCardContainer">
             <ProjectPostCardContainer projects={myProjects} />
           </div>
-        ) : null}
+        )}
 
         <div className="sub-title">
           <h2>All Projects</h2>
