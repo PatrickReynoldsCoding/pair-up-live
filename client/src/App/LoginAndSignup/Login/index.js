@@ -101,7 +101,7 @@ const Login = () => {
               </Button>
             </Box>
             <Typography>
-              <Link href="#">Forgot password ?</Link>
+              <Link href="#">Forgot your password ?</Link>
             </Typography>
             <Typography>
               {' '}
