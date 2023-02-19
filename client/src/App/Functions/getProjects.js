@@ -1,6 +1,6 @@
 export const getAllProjects = async () => {
   try {
-    const res = await fetch("http://localhost:8080/projects/getallprojects/");
+    const res = await fetch("http://localhost:8080/api/projects/getallprojects/");
     console.log("pulling projects")
     return await res.json();
   } catch (err) {}
@@ -18,7 +18,7 @@ export const getAllProjectsById = async () => {
     };
   }
   try {
-    const res = await fetch(`http://localhost:8080/projects/getallmyprojects`, config);
+    const res = await fetch(`http://localhost:8080/api/projects/getallmyprojects`, config);
     console.log("pulling projects by ID")
     return await res.json();
   } catch (err) {}
@@ -26,7 +26,7 @@ export const getAllProjectsById = async () => {
 
 export const getOneProjectById = async (id) => {
   try {
-    const res = await fetch(`http://localhost:8080/projects/getprojectbyid/${id}`);
+    const res = await fetch(`http://localhost:8080/api/projects/getprojectbyid/${id}`);
     console.log("pulling project by ID")
     return await res.json();
   } catch (err) {}
