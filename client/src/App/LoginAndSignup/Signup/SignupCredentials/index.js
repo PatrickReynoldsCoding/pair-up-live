@@ -98,7 +98,7 @@ export default function SignupCredentials({
             />
             <br />
             <TextField
-              type="password"
+              type="text"
               inputRef={passwordRef}
               id="Password_"
               label="Password"

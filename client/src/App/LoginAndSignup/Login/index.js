@@ -1,57 +1,54 @@
-import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
-import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Avatar from "@mui/material/Avatar";
-import LockIcon from "@mui/icons-material/Lock";
-import Box from "@mui/material/Box";
+import React, { Component, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
+import LockIcon from '@mui/icons-material/Lock';
+import Box from '@mui/material/Box';
 
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
 
-  // This function is called when the user submits the login form
   const submit = async (e) => {
-    e.preventDefault(); // prevent the browser redirecting so request can be carried out
-    const requestOptions = {
-      method: "POST",
-      credentials: "include", // send cookies along with the request
-      headers: { "Content-Type": "application/json" }, // set the request content type to JSON
-      body: JSON.stringify({ email: email, password: password }), // convert the data to a JSON string and include it in the request body
+    e.preventDefault();
+    const data = {
+      email: email,
+      password: password,
     };
-
-    // Send the login request to the server
-    try {
-      const response = await fetch(
-        "http://localhost:8080/auth",
-        requestOptions
-      );
-      const data = await response.json(); // parse the response data as JSON
-      localStorage.setItem("token", data.token); // store the authentication token in local storage
-      setRedirect(true); // set the redirect flag to true to navigate to the welcome page
-    } catch (error) {
-      console.error(error);
-    }
+    const requestOptions = {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: password }),
+    };
+    fetch('http://localhost:8080/api/auth', requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.token);
+        localStorage.setItem('token', data.token);
+        setRedirect(true);
+      });
   };
 
   if (redirect) return <Navigate to="/welcome" />;
 
   const paperStyle = {
     padding: 20,
-    height: "70vh",
+    height: '70vh',
     width: 500,
-    margin: "20px auto",
+    margin: '20px auto',
   };
 
-  const avatarStyle = { backgroundColor: "#89CFF0" };
-  const btnstyle = { margin: "8px 0" };
-  const fontColour = { color: "black", align: "left" };
+  const avatarStyle = { backgroundColor: '#89CFF0' };
+  const btnstyle = { margin: '8px 0' };
+  const fontColour = { color: 'black', align: 'left' };
   //const passwordStyle = { minWidth: 150, minHeight: 100, bottom: 0 };
 
   return (
@@ -97,7 +94,7 @@ const Login = () => {
               <Button
                 type="submit"
                 variant="contained"
-                onClick={() => "/profile"}
+                onClick={() => '/profile'}
                 className="btn btn-primary btn-bloack"
               >
                 Login
@@ -107,7 +104,7 @@ const Login = () => {
               <Link href="#">Forgot password ?</Link>
             </Typography>
             <Typography>
-              {" "}
+              {' '}
               Don't have an account?
               <Link href="/Signupname"> Sign Up</Link>
             </Typography>

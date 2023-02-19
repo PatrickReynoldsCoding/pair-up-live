@@ -1,16 +1,16 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
 const AuthController = {
   Login: async (req, res) => {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     try {
       let user = await User.findOne({ email });
       if (!user) {
         return res.status(400).json({
-          errors: [{ msg: "Invalid Credentials. Please try again." }],
+          errors: [{ msg: 'Invalid Credentials. Please try again.' }],
         });
       }
 
@@ -19,7 +19,7 @@ const AuthController = {
 
       if (!isMatch) {
         return res.status(400).json({
-          errors: [{ msg: "Invalid Credentials. Please try again." }],
+          errors: [{ msg: 'Invalid Credentials. Please try again.' }],
         });
       }
 
@@ -31,7 +31,7 @@ const AuthController = {
 
       jwt.sign(
         payload,
-        "secretWebToken",
+        'secretWebToken',
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
@@ -40,7 +40,7 @@ const AuthController = {
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send("Server error");
+      res.status(500).send('Server error');
     }
   },
 };
